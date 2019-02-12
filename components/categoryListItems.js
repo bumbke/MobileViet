@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-    View, Text, Image, StyleSheet
+    View, Text, Image, StyleSheet, TouchableOpacity, Alert
 } from 'react-native'
 import CardView from 'react-native-cardview'
 
@@ -8,18 +8,24 @@ export default function categoryListItems(props) {
     const { category } = props;
   
     return (
-      <View >
-        <CardView
-            cardElevation= {8}
-            cardMaxElevation= {10}
-            conerRadius= {10}
-            style={styles.CardviewStyle}
-           
+        <TouchableOpacity
+            activeOpacity={0.5}
+            onPress = {() => {
+                Alert.alert('click');
+            }}
         >
-            <Text style={styles.CategoryTitle}>{category.name}</Text>
-            <Image source={require('../images/smartphone.png')} style={styles.image}></Image>
-        </CardView>
-      </View>
+            <View >
+                <CardView
+                    cardElevation= {8}
+                    cardMaxElevation= {10}
+                    conerRadius= {10}
+                    style={styles.CardviewStyle}
+                >
+                    <Text style={styles.CategoryTitle}>{category.name}</Text>
+                    <Image source={require('../images/smartphone.png')} style={styles.image}></Image>
+                </CardView>
+            </View>
+        </TouchableOpacity>
     )
   }
 
