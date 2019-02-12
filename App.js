@@ -8,17 +8,33 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import Category from './components/categoryListItems';
+import {Platform, StyleSheet, Text, View, ScrollView, FlatList} from 'react-native';
+import CategoryListItems from './components/categoryListItems';
 
 type Props = {};
 export default class App extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: [
+        {id: 1, name: 'ĐIỆN THOẠI'},
+        {id: 2, name: 'TABLET'},
+        {id: 3, name: 'LAPTOP'},
+        {id: 4, name: 'PHỤ KIỆN'}
+      ]
+    };
+  }
+
   render() {
+    const {categories} = this.state;
     return (
-      <View style={styles.container}>
-        <Category />
-        <Category />
-        <Category />
+      <View>
+          <FlatList data={categories}
+              renderItem={({ item }) => <CategoryListItems category={item} />}
+              keyExtractor={ item  => '${item.id}'}
+              contentContainerStyle={{paddingLeft: 16, paddingRight: 16}}
+          />
+        
       </View>
     );
   }
@@ -30,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'stretch',
     backgroundColor: '#FFF',
-    paddingRight: 16,
-    paddingLeft: 16
+    paddingLeft: 16,
+    paddingRight: 16
   },
 });

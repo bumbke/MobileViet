@@ -4,10 +4,11 @@ import {
 } from 'react-native'
 import CardView from 'react-native-cardview'
 
-export default class categoryListItems extends Component {
-  render() {
+export default function categoryListItems(props) {
+    const { category } = props;
+  
     return (
-      <View  >
+      <View >
         <CardView
             cardElevation= {8}
             cardMaxElevation= {10}
@@ -15,19 +16,18 @@ export default class categoryListItems extends Component {
             style={styles.CardviewStyle}
            
         >
-            <Text style={styles.CategoryTitle}>SMART PHONE</Text>
+            <Text style={styles.CategoryTitle}>{category.name}</Text>
             <Image source={require('../images/smartphone.png')} style={styles.image}></Image>
         </CardView>
       </View>
     )
   }
-}
+
 
 const styles = StyleSheet.create({
     
     Container: {
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: '#FFF'
     },
 
     CardviewStyle: {
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: 100,
-        height: 100,
+        width: 84,
+        height: 84,
         marginBottom: 16
     }
 })
