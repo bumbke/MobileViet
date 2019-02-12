@@ -1,26 +1,19 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-type Props = {};
-export default class Category extends Component<Props> {
+
+export default class Category extends React.Component {
+
+    static navigationOptions = ({ navigation }) => {
+        return { title: navigation.getParam('categoryName') };
+    };
 
   render() {
-    const {categories} = this.state;
     return (
       <View>
-        category
+        <Text>con ga</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    backgroundColor: '#FFF',
-    paddingLeft: 16,
-    paddingRight: 16
-  },
-});

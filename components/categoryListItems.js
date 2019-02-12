@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import {
-    View, Text, Image, StyleSheet, TouchableOpacity, Alert
+    View, Text, Image, StyleSheet, TouchableOpacity
 } from 'react-native'
 import CardView from 'react-native-cardview'
 
 export default function categoryListItems(props) {
-    const { category } = props;
+    const { category, onPress } = props;
   
     return (
         <TouchableOpacity
             activeOpacity={0.5}
-            onPress = {() => {
-                Alert.alert('click');
-            }}
+            onPress= {onPress}
         >
             <View >
                 <CardView
